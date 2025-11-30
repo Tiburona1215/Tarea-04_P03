@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "browser": "^0.2.6",
+    "gx": "^2.2.0",
+    "opera": "^0.0.10",
+    "selenium-webdriver": "^4.38.0"
+  }
+}
