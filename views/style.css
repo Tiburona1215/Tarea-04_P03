@@ -1,366 +1,440 @@
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #faf5ff 0%, #eff6ff 50%, #fce7f3 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #faf5ff 0%, #eff6ff 50%, #fce7f3 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
 
-        .container {
-            max-width: 48rem;
-            margin: 0 auto;
-        }
+.container {
+    max-width: 48rem;
+    margin: 0 auto;
+}
 
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-        .header h1 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            background: linear-gradient(to right, #9333ea, #2563eb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
+.header h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #9333ea, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
 
-        .header p {
-            color: #4b5563;
-        }
+.header p {
+    color: #4b5563;
+}
 
-        /* Form Card */
-        .form-card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid #e5e7eb;
-        }
+/* Form Card */
+.form-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e5e7eb;
+}
 
-        /* Type Buttons */
-        .type-buttons {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
+/* Type Buttons */
+.type-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
 
-        .type-btn {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: #f3f4f6;
-            color: #374151;
-        }
+.type-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #f3f4f6;
+    color: #374151;
+}
 
-        .type-btn:hover {
-            background: #e5e7eb;
-        }
+.type-btn:hover {
+    background: #e5e7eb;
+}
 
-        .type-btn.active {
-            background: linear-gradient(to right, #a855f7, #3b82f6);
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: scale(1.05);
-        }
+.type-btn.active {
+    background: linear-gradient(to right, #a855f7, #3b82f6);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
 
-        /* Text Input */
-        #noteContent {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 0.75rem;
-            font-family: inherit;
-            font-size: 1rem;
-            resize: none;
-            transition: border-color 0.3s;
-        }
+/* Text Input */
+#noteContent {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+    transition: border-color 0.3s;
+}
 
-        #noteContent:focus {
-            outline: none;
-            border-color: #a855f7;
-        }
+#noteContent:focus {
+    outline: none;
+    border-color: #a855f7;
+}
 
-        /* List Items */
-        .list-items {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+/* List Items */
+.list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
-        .list-item-row {
-            display: flex;
-            gap: 0.5rem;
-        }
+.list-item-row {
+    display: flex;
+    gap: 0.5rem;
+}
 
-        .list-item-input {
-            flex: 1;
-            padding: 0.75rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 0.5rem;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
+.list-item-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
 
-        .list-item-input:focus {
-            outline: none;
-            border-color: #a855f7;
-        }
+.list-item-input:focus {
+    outline: none;
+    border-color: #a855f7;
+}
 
-        .remove-item-btn {
-            padding: 0.75rem;
-            background: #fee2e2;
-            color: #dc2626;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+.remove-item-btn {
+    padding: 0.75rem;
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
 
-        .remove-item-btn:hover {
-            background: #fecaca;
-        }
+.remove-item-btn:hover {
+    background: #fecaca;
+}
 
-        .add-item-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: #d1fae5;
-            color: #065f46;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 0.5rem;
-        }
+.add-item-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #d1fae5;
+    color: #065f46;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 0.5rem;
+}
 
-        .add-item-btn:hover {
-            background: #a7f3d0;
-        }
+.add-item-btn:hover {
+    background: #a7f3d0;
+}
 
-        /* Save Button */
-        .save-btn {
-            width: 100%;
-            margin-top: 1rem;
-            padding: 0.75rem;
-            background: linear-gradient(to right, #a855f7, #3b82f6);
-            color: white;
-            border: none;
-            border-radius: 0.75rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+/* Save Button */
+.save-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: linear-gradient(to right, #a855f7, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
 
-        .save-btn:hover {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            transform: scale(1.02);
-        }
+.save-btn:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
 
-        /* Notes List */
-        .notes-header {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
+/* Notes List */
+.notes-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
 
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .empty-state p:first-child {
-            color: #9ca3af;
-            font-size: 1.125rem;
-        }
+.empty-state p:first-child {
+    color: #9ca3af;
+    font-size: 1.125rem;
+}
 
-        .empty-state p:last-child {
-            color: #d1d5db;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
+.empty-state p:last-child {
+    color: #d1d5db;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
 
-        /* Note Card */
-        .note-card {
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s;
-        }
+/* Note Card */
+.note-card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s;
+}
 
-        .note-card:hover {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            transform: scale(1.01);
-        }
+.note-card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+}
 
-        .note-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-        }
+.note-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
 
-        .note-badge.text-type {
-            background: #f3e8ff;
-            color: #6b21a8;
-        }
+.note-badge.text-type {
+    background: #f3e8ff;
+    color: #6b21a8;
+}
 
-        .note-badge.list-type {
-            background: #d1fae5;
-            color: #065f46;
-        }
+.note-badge.list-type {
+    background: #d1fae5;
+    color: #065f46;
+}
 
-        .note-text {
-            color: #374151;
-            font-size: 1.125rem;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
+.note-text {
+    color: #374151;
+    font-size: 1.125rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 
-        /* List Items in Note */
-        .note-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+/* List Items in Note */
+.note-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
-        .note-list-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            transition: background 0.3s;
-        }
+.note-list-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background 0.3s;
+}
 
-        .note-list-item:hover {
-            background: #f9fafb;
-        }
+.note-list-item:hover {
+    background: #f9fafb;
+}
 
-        .checkbox {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 1.5rem;
-            border: 2px solid #d1d5db;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+.checkbox {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
 
-        .checkbox:hover {
-            border-color: #a855f7;
-        }
+.checkbox:hover {
+    border-color: #a855f7;
+}
 
-        .checkbox.checked {
-            background: #22c55e;
-            border-color: #22c55e;
-        }
+.checkbox.checked {
+    background: #22c55e;
+    border-color: #22c55e;
+}
 
-        .checkbox svg {
-            display: none;
-            width: 1rem;
-            height: 1rem;
-            color: white;
-        }
+.checkbox svg {
+    display: none;
+    width: 1rem;
+    height: 1rem;
+    color: white;
+}
 
-        .checkbox.checked svg {
-            display: block;
-        }
+.checkbox.checked svg {
+    display: block;
+}
 
-        .note-list-item span {
-            flex: 1;
-            color: #374151;
-        }
+.note-list-item span {
+    flex: 1;
+    color: #374151;
+}
 
-        .note-list-item.completed span {
-            text-decoration: line-through;
-            opacity: 0.5;
-        }
+.note-list-item.completed span {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
 
-        /* Action Buttons */
-        .note-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
-        }
+/* Action Buttons */
+.note-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
 
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            color: white;
-        }
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+}
 
-        .edit-btn {
-            background: #3b82f6;
-        }
+.edit-btn {
+    background: #3b82f6;
+}
 
-        .edit-btn:hover {
-            background: #2563eb;
-        }
+.edit-btn:hover {
+    background: #2563eb;
+}
 
-        .delete-btn {
-            background: #ef4444;
-        }
+.delete-btn {
+    background: #ef4444;
+}
 
-        .delete-btn:hover {
-            background: #dc2626;
-        }
+.delete-btn:hover {
+    background: #dc2626;
+}
 
-        .hidden {
-            display: none !important;
-        }
+.hidden {
+    display: none !important;
+}
 
-        /* Icons */
-        .icon {
-            width: 1.125rem;
-            height: 1.125rem;
-        }
+/* Icons */
+.icon {
+    width: 1.125rem;
+    height: 1.125rem;
+}
 
-        .icon-sm {
-            width: 0.75rem;
-            height: 0.75rem;
-        }
+.icon-sm {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+/*Log*/
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.login-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    border: 1px solid #e5e7eb;
+    max-width: 22rem;
+    width: 100%;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #9333ea, #2563eb);
+    -webkit-text-fill-color: black;
+    margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.login-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #a855f7;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(to right, #a855f7, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+}
+
+.error-text {
+    color: #dc2626;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
