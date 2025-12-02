@@ -1,5 +1,6 @@
 const { Builder, By } = require("selenium-webdriver");
 const assert = require("assert");
+const fs = require("fs");
 
 describe("Crear nota lista - Prueba de Límites", function () {
     this.timeout(40000);
@@ -14,6 +15,12 @@ describe("Crear nota lista - Prueba de Límites", function () {
     });
 
     after(async () => await driver.quit());
+
+    afterEach(async function () {
+        const testName = this.currentTest.title.replace(/\s+/g, "_");
+        const screenshot = await driver.takeScreenshot();
+        fs.writeFileSync(`snapshots/${testName}.png`, screenshot, "base64");
+    });
 
     it("Debe permitir crear lista con muchas tareas", async () => {
         await driver.findElement(By.id("listTypeBtn")).click();

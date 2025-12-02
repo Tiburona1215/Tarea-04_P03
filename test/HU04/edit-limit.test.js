@@ -1,5 +1,6 @@
 const { Builder, By } = require("selenium-webdriver");
 const assert = require("assert");
+const fs = require("fs");
 
 describe("Editar nota - Prueba de Límites", function () {
     this.timeout(45000);
@@ -17,6 +18,12 @@ describe("Editar nota - Prueba de Límites", function () {
     });
 
     after(async () => await driver.quit());
+
+    afterEach(async function () {
+        const testName = this.currentTest.title.replace(/\s+/g, "_");
+        const screenshot = await driver.takeScreenshot();
+        fs.writeFileSync(`snapshots/${testName}.png`, screenshot, "base64");
+    });
 
     it("Debe permitir editar con texto muy largo", async () => {
         await driver.findElement(By.css(".edit-btn")).click();

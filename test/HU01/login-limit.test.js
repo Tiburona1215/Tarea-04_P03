@@ -1,5 +1,6 @@
 const { Builder, By } = require("selenium-webdriver");
 const assert = require("assert");
+const fs = require("fs");
 
 describe("Login - Prueba de Límites", function () {
     this.timeout(30000);
@@ -12,6 +13,13 @@ describe("Login - Prueba de Límites", function () {
     after(async () => {
         await driver.quit();
     });
+
+    afterEach(async function () {
+        const testName = this.currentTest.title.replace(/\s+/g, "_");
+        const screenshot = await driver.takeScreenshot();
+        fs.writeFileSync(`snapshots/${testName}.png`, screenshot, "base64");
+    });
+
 
     it("Debe impedir el login si los campos están vacíos", async () => {
         await driver.get("file:///C:/Users/nicol/OneDrive%20-%20Instituto%20Tecnológico%20de%20Las%20Américas%20(ITLA)/Universidad/UniversidadC3-2025/P03/Tarea%2304/views/login.html");

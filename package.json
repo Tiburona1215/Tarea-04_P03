@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Proyecto con Selenium",
   "main": "test/test-login.js",
- "scripts": {
-  "test": "mocha test/*.js --reporter mochawesome --timeout 50000"
-},
+  "scripts": {
+    "test": "mocha \"test/**/*.test.js\" --reporter mochawesome --timeout 30000"
+  },
   "dependencies": {
     "browser": "^0.2.6",
     "gx": "^2.2.0",

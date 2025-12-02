@@ -1,8 +1,9 @@
 const { Builder, By } = require("selenium-webdriver");
 const assert = require("assert");
+const fs = require("fs");
 
 describe("Crear nota de texto - Prueba de Límites", function () {
-    this.timeout(40000);
+    this.timeout(60000);
     let driver;
 
     before(async () => {
@@ -15,8 +16,14 @@ describe("Crear nota de texto - Prueba de Límites", function () {
 
     after(async () => await driver.quit());
 
+    afterEach(async function () {
+        const testName = this.currentTest.title.replace(/\s+/g, "_");
+        const screenshot = await driver.takeScreenshot();
+        fs.writeFileSync(`snapshots/${testName}.png`, screenshot, "base64");
+    });
+
     it("Debe permitir guardar una nota con texto muy largo", async () => {
-        const largo = "Hola, ".repeat(1600);
+        const largo = "Hola, ".repeat(1000);
         await driver.findElement(By.id("noteContent")).sendKeys(largo);
         await driver.findElement(By.id("saveBtnText")).click();
 

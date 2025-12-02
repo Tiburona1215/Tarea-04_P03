@@ -1,5 +1,6 @@
 const { Builder, By } = require("selenium-webdriver");
 const assert = require("assert");
+const fs = require("fs");
 
 describe("Login - Prueba Negativa", function () {
     this.timeout(30000);
@@ -11,6 +12,12 @@ describe("Login - Prueba Negativa", function () {
 
     after(async () => {
         await driver.quit();
+    });
+
+    afterEach(async function () {
+        const testName = this.currentTest.title.replace(/\s+/g, "_");
+        const screenshot = await driver.takeScreenshot();
+        fs.writeFileSync(`snapshots/${testName}.png`, screenshot, "base64");
     });
 
     it("Debe mostrar mensaje de error si las credenciales son incorrectas", async () => {

@@ -1,4 +1,5 @@
 const { Builder, By } = require("selenium-webdriver");
+const fs = require("fs");
 
 describe("Editar nota - Negativa", function () {
     this.timeout(45000);
@@ -16,6 +17,12 @@ describe("Editar nota - Negativa", function () {
     });
 
     after(async () => await driver.quit());
+
+    afterEach(async function () {
+        const testName = this.currentTest.title.replace(/\s+/g, "_");
+        const screenshot = await driver.takeScreenshot();
+        fs.writeFileSync(`snapshots/${testName}.png`, screenshot, "base64");
+    });
 
     it("Debe impedir guardar una nota vacía al editar", async () => {
         await driver.findElement(By.css(".edit-btn")).click();

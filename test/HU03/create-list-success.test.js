@@ -1,5 +1,6 @@
 const { Builder, By } = require("selenium-webdriver");
 const assert = require("assert");
+const fs = require("fs");
 
 describe("Crear nota tipo lista - Camino Feliz", function () {
     this.timeout(40000);
@@ -14,6 +15,12 @@ describe("Crear nota tipo lista - Camino Feliz", function () {
     });
 
     after(async () => await driver.quit());
+
+     afterEach(async function () {
+            const testName = this.currentTest.title.replace(/\s+/g, "_");
+            const screenshot = await driver.takeScreenshot();
+            fs.writeFileSync(`snapshots/${testName}.png`, screenshot, "base64");
+        });
 
     it("Debe crear una lista con tareas", async () => {
         await driver.findElement(By.id("listTypeBtn")).click();

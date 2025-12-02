@@ -1,5 +1,6 @@
 const { Builder, By } = require("selenium-webdriver");
 const assert = require("assert");
+const fs = require("fs");
 
 describe("Eliminar nota - Prueba de Límites", function () {
     this.timeout(50000);
@@ -19,6 +20,12 @@ describe("Eliminar nota - Prueba de Límites", function () {
     });
 
     after(async () => await driver.quit());
+
+    afterEach(async function () {
+        const testName = this.currentTest.title.replace(/\s+/g, "_");
+        const screenshot = await driver.takeScreenshot();
+        fs.writeFileSync(`snapshots/${testName}.png`, screenshot, "base64");
+    });
 
     it("Debe permitir borrar múltiples notas sin errores", async () => {
         let deleteButtons = await driver.findElements(By.css(".delete-btn"));
