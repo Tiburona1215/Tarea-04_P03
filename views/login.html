@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="login-wrapper">
+        <div class="login-card">
+            <h1 class="login-title">Bienvenido</h1>
+            <p class="login-subtitle">Inicia sesión para continuar</p>
+
+            <input type="text" id="username" class="login-input" placeholder="Usuario">
+            <input type="password" id="password" class="login-input" placeholder="Contraseña">
+
+            <button class="login-btn" onclick="login()">Ingresar</button>
+
+            <p id="loginError" class="error-text"></p>
+        </div>
+    </div>
+
+    <script defer src="../controllers/app.js"></script>
+</body>
+</html>

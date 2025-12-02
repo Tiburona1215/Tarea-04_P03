@@ -1,8 +1,21 @@
 {
+  "name": "tarea04",
+  "version": "1.0.0",
+  "description": "Proyecto con Selenium",
+  "main": "test/test-login.js",
+  "scripts": {
+    "test": "mocha \"test/**/*.test.js\" --reporter mochawesome --timeout 30000"
+  },
   "dependencies": {
     "browser": "^0.2.6",
     "gx": "^2.2.0",
     "opera": "^0.0.10",
     "selenium-webdriver": "^4.38.0"
+  },
+  "devDependencies": {
+    "mocha": "^11.7.5",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.0",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }

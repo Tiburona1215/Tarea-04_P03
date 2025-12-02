@@ -3,6 +3,16 @@ let noteType = 'text';
 let editingId = null;
 let listItems = [''];
 
+
+if (localStorage.getItem("logged") !== "true") {
+    window.location.href = "login.html";
+}
+
+function logout() {
+    localStorage.removeItem("logged");
+    window.location.href = "login.html";
+}
+
 function init() {
     const stored = localStorage.getItem('notes');
     if (stored) {
