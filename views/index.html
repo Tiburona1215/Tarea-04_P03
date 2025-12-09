@@ -15,37 +15,97 @@
             <p>Organiza tus ideas de manera sencilla</p>
         </div>
 
-        <div class="form-card">
-            <div class="type-buttons">
-                <button class="type-btn active" id="textTypeBtn" onclick="setNoteType('text')">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Note
-                </button>
-                <button class="type-btn" id="listTypeBtn" onclick="setNoteType('list')">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                    </svg>
-                    List
-                </button>
-            </div>
+        <div class="header-actions">
+            <button class="theme-toggle-btn" onclick="toggleTheme()" title="Cambiar tema">
+                <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg class="moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+            <button class="export-all-btn" onclick="exportAllNotes()">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Exportar Todas
+            </button>
+        </div>
+    </div>
+    </div>
 
-            <textarea id="noteContent" rows="6" placeholder="Escribe tu nota aquí..."></textarea>
-
-            <div id="listItemsContainer" class="list-items hidden"></div>
-
-            <button class="save-btn" onclick="saveNote()">
-                <span id="saveBtnText">Save note</span>
+    <div class="form-card">
+        <div class="type-buttons">
+            <button class="type-btn active" id="textTypeBtn" onclick="setNoteType('text')">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Note
+            </button>
+            <button class="type-btn" id="listTypeBtn" onclick="setNoteType('list')">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+                List
             </button>
         </div>
 
-        <div>
-            <h2 class="notes-header">your notes (<span id="notesCount">0</span>)</h2>
-            <div id="notesList"></div>
+        <textarea id="noteContent" rows="6" placeholder="Escribe tu nota aquí..."></textarea>
+
+        <div id="listItemsContainer" class="list-items hidden"></div>
+
+        <div class="tags-input-container">
+            <label class="tags-label">Etiquetas (separadas por coma):</label>
+            <input type="text" id="tagsInput" class="tags-input" placeholder="trabajo, personal, urgente...">
+            <div id="suggestedTags" class="suggested-tags"></div>
         </div>
+
+        <button class="save-btn" onclick="saveNote()">
+            <span id="saveBtnText">Save note</span>
+        </button>
+    </div>
+
+    <div class="search-filter-bar">
+        <div class="search-container">
+            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Buscar en tus notas..."
+                oninput="applyFilters()">
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all" onclick="setTypeFilter('all')">
+                Todas
+            </button>
+            <button class="filter-btn" data-filter="text" onclick="setTypeFilter('text')">
+                Notas Simples
+            </button>
+            <button class="filter-btn" data-filter="list" onclick="setTypeFilter('list')">
+                Listas
+            </button>
+            <button class="filter-btn" data-filter="favorites" onclick="setTypeFilter('favorites')">
+                <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                Favoritas
+            </button>
+        </div>
+    </div>
+
+    <div id="tagFilterContainer" class="tag-filter-container"></div>
+
+    <div>
+        <h2 class="notes-header">your notes (<span id="notesCount">0</span>)</h2>
+        <div id="notesList"></div>
+    </div>
     </div>
 
     <script defer src="../controllers/app.js"></script>
