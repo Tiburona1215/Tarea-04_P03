@@ -3,7 +3,7 @@ const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 
-describe("Suite Completa de Pruebas - Blog de Notas", function () {
+describe("Suite Completa de Pruebas - Blog web de Notas", function () {
     this.timeout(60000);
     let driver;
     const loginUrl = "http://localhost:5500/views/login.html";
@@ -83,14 +83,14 @@ describe("Suite Completa de Pruebas - Blog de Notas", function () {
         });
 
         it("Debe crear una nota de texto correctamente", async function () {
-            await driver.findElement(By.id("noteContent")).sendKeys("Mi primera nota de prueba");
+            await driver.findElement(By.id("noteContent")).sendKeys("Primera nota de prueba");
             await driver.findElement(By.id("saveBtnText")).click();
             
             const count = await driver.findElement(By.id("notesCount")).getText();
             assert.equal(parseInt(count), 1);
             
             const noteText = await driver.findElement(By.css(".note-text")).getText();
-            assert.equal(noteText, "Mi primera nota de prueba");
+            assert.equal(noteText, "Primera nota de prueba");
         });
 
         it("Debe mostrar alerta si la nota está vacía", async function () {
@@ -104,7 +104,7 @@ describe("Suite Completa de Pruebas - Blog de Notas", function () {
         });
 
         it("Debe permitir crear nota con texto muy largo", async function () {
-            const largeText = "Texto largo. ".repeat(200);
+            const largeText = "Bla, Bla, Bla, ".repeat(200);
             await driver.findElement(By.id("noteContent")).sendKeys(largeText);
             await driver.findElement(By.id("saveBtnText")).click();
             
