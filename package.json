@@ -4,8 +4,19 @@
   "description": "Proyecto con Selenium",
   "main": "test/test-login.js",
   "scripts": {
-    "test": "mocha \"test/**/*.test.js\" --reporter mochawesome --timeout 30000"
+    "test": "mocha \"pruebas/**/*.test.js\" --reporter mochawesome --timeout 30000 --exit",
+    "test:single": "mocha test/complete-test-suite.js",
+    "test:watch": "mocha test/complete-test-suite.js --watch",
+    "clean": "rm -rf test-reports snapshots mochawesome-report",
+    "report": "open test-reports/test-report.html"
   },
+  "keywords": [
+    "selenium",
+    "mocha",
+    "mochawesome",
+    "testing",
+    "e2e"
+  ],
   "dependencies": {
     "browser": "^0.2.6",
     "gx": "^2.2.0",

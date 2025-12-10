@@ -48,7 +48,7 @@ body {
     padding: 0 1.5rem;
 }
 
-/* Header - CORREGIDO Y MEJORADO */
+/* Header */
 .header {
     margin-bottom: 2rem;
     animation: fadeInDown 0.6s ease-out;
@@ -89,7 +89,7 @@ body {
     align-items: center;
 }
 
-/* Botón de tema - MEJORADO */
+/* Botón de tema */
 .theme-toggle-btn {
     display: flex;
     align-items: center;
@@ -117,7 +117,7 @@ body {
     color: var(--text-primary);
 }
 
-/* Botón exportar - MEJORADO */
+/* Botón exportar */
 .export-all-btn {
     display: inline-flex;
     align-items: center;
@@ -144,7 +144,7 @@ body {
     height: 1rem;
 }
 
-/* Botón logout - NUEVO */
+/* Botón logout */
 .logout-btn {
     display: inline-flex;
     align-items: center;
@@ -171,7 +171,7 @@ body {
     height: 1rem;
 }
 
-/* Form Card - MÁS COMPACTA */
+/* Form Card */
 .form-card {
     background: var(--bg-card);
     border-radius: 1rem;
@@ -384,7 +384,7 @@ body {
     transform: scale(1.02);
 }
 
-/* Search and Filter Bar - OPTIMIZADA */
+/* Search and Filter Bar */
 .search-filter-bar {
     background: var(--bg-card);
     border-radius: 1rem;
@@ -536,7 +536,7 @@ body {
     font-size: 1.125rem;
 }
 
-/* Note Card - MÁS COMPACTA */
+/* Note Card */
 .note-card {
     background: var(--bg-card);
     border-radius: 0.875rem;
@@ -860,7 +860,7 @@ body {
     }
 }
 
-/* Responsive - MEJORADO */
+/* Responsive */
 @media (max-width: 768px) {
     .header-top {
         flex-direction: column;

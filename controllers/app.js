@@ -2,7 +2,7 @@ let notes = [];
 let noteType = 'text';
 let editingId = null;
 let listItems = [''];
-let currntTypeFilter = 'all';
+let currentTypeFilter = 'all';
 let currentSearchTerm = '';
 let currentTagFilter = null;
 
@@ -346,6 +346,9 @@ function renderFilteredNotes(filteredNotes) {
 
 //render notes
 function renderNotes() {
+    currentTypeFilter = "all";  
+    currentTagFilter = null;
+    currentSearchTerm = "";
     applyFilters();
 }
 
@@ -431,14 +434,14 @@ function exportNote(id) {
     const date = new Date().toISOString().split('T')[0];
 
     if (note.type === 'text') {
-        content = `NOTA SIMPLE\n`;
+        content = `NOTA\n`;
         content += `Fecha de exportación: ${date}\n`;
-        content += `${'='.repeat(50)}\n\n`;
+        content += `${'_'.repeat(50)}\n\n`;
         content += note.text;
     } else {
         content = `LISTA DE TAREAS\n`;
         content += `Fecha de exportación: ${date}\n`;
-        content += `${'='.repeat(50)}\n\n`;
+        content += `${'_'.repeat(50)}\n\n`;
         note.items.forEach((item, index) => {
             const status = item.completed ? '[✓]' : '[ ]';
             content += `${index + 1}. ${status} ${item.text}\n`;
