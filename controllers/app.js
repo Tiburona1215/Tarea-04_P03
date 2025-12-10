@@ -2,6 +2,9 @@ let notes = [];
 let noteType = 'text';
 let editingId = null;
 let listItems = [''];
+let currntTypeFilter = 'all';
+let currentSearchTerm = '';
+let currentTagFilter = null;
 
 
 if (localStorage.getItem("logged") !== "true") {
@@ -22,7 +25,35 @@ function init() {
             notes = [];
         }
     }
+    loadThemes();
     renderNotes();
+    updateTagFilters();
+    updateSuggestedTags();
+}
+
+function loadThemes() {
+    const theme = localStorage.getItem('theme') || 'light';
+    document.body.setAttribute('data-theme', theme);
+    updateThemeIcon(theme);
+}
+function toggleTheme() {
+    const currentTheme = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+}
+function updateThemeIcon(theme) {
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+
+    if (theme === 'dark') {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+    } else {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+    }
 }
 
 //tipo nota
@@ -109,7 +140,10 @@ function saveNote() {
             return;
         }
     }
-    // Crear o editar nota
+
+    const tagsInput = document.getElementById('tagsInput').value.trim();
+    const tags = tagsInput ? tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
+
     if (editingId) {
         notes = notes.map(note => {
             if (note.id === editingId) {
@@ -117,7 +151,9 @@ function saveNote() {
                     ...note,
                     text: noteType === 'text' ? document.getElementById('noteContent').value : '',
                     type: noteType,
-                    items: noteType === 'list' ? listItems.filter(item => item.trim()).map(text => ({ text, completed: false })) : []
+                    items: noteType === 'list' ? listItems.filter(item => item.trim()).map(text => ({ text, completed: false })) : [],
+                    tags: tags,
+                    favorite: note.favorite || false
                 };
             }
             return note;
@@ -128,20 +164,24 @@ function saveNote() {
             id: Date.now(),
             text: noteType === 'text' ? document.getElementById('noteContent').value : '',
             type: noteType,
-            items: noteType === 'list' ? listItems.filter(item => item.trim()).map(text => ({ text, completed: false })) : []
+            items: noteType === 'list' ? listItems.filter(item => item.trim()).map(text => ({ text, completed: false })) : [],
+            tags: tags,
+            favorite: false
         };
         notes.unshift(newNote);
     }
 
-    // Guardar y limpiar
     saveToLocalStorage();
     clearForm();
     renderNotes();
+    updateTagFilters();
+    updateSuggestedTags();
 }
 
 //Limpiar
 function clearForm() {
     document.getElementById('noteContent').value = '';
+    document.getElementById('tagsInput').value = '';
     listItems = [''];
     noteType = 'text';
     editingId = null;
@@ -180,6 +220,7 @@ function editNote(id) {
     } else {
         listItems = (note.items || []).map(item => item.text);
     }
+    document.getElementById('tagsInput').value = (note.tags || []).join(', ');
 
     setNoteType(note.type);
     document.getElementById('saveBtnText').textContent = 'Actualizar Nota';
@@ -192,6 +233,8 @@ function deleteNote(id) {
         notes = notes.filter(note => note.id !== id);
         saveToLocalStorage();
         renderNotes();
+        updateTagFilters();
+        updateSuggestedTags();
     }
 }
 
@@ -199,6 +242,70 @@ function deleteNote(id) {
 function saveToLocalStorage() {
     localStorage.setItem('notes', JSON.stringify(notes));
 }
+
+function setTypeFilter(filter) {
+    currentTypeFilter = filter;
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+
+    applyFilters();
+}
+
+function setTagFilter(tag) {
+    if (currentTagFilter === tag) {
+        currentTagFilter = null;
+    } else {
+        currentTagFilter = tag;
+    }
+    updateTagFilters();
+    applyFilters();
+}
+
+function applyFilters() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+    currentSearchTerm = searchTerm;
+
+    let filteredNotes = [...notes];
+
+    if (currentTypeFilter === 'text') {
+        filteredNotes = filteredNotes.filter(note => note.type === 'text');
+    } else if (currentTypeFilter === 'list') {
+        filteredNotes = filteredNotes.filter(note => note.type === 'list');
+    } else if (currentTypeFilter === 'favorites') {
+        filteredNotes = filteredNotes.filter(note => note.favorite);
+    }
+
+    if (currentTagFilter) {
+        filteredNotes = filteredNotes.filter(note =>
+            note.tags && note.tags.includes(currentTagFilter)
+        );
+    }
+
+    if (searchTerm) {
+        filteredNotes = filteredNotes.filter(note => {
+
+            if (note.type === 'text' && note.text.toLowerCase().includes(searchTerm)) {
+                return true;
+            }
+
+            if (note.type === 'list') {
+                return note.items.some(item => item.text.toLowerCase().includes(searchTerm));
+            }
+
+            if (note.tags && note.tags.some(tag => tag.toLowerCase().includes(searchTerm))) {
+                return true;
+            }
+            return false;
+        });
+    }
+
+    renderFilteredNotes(filteredNotes);
+}
+
 
 //render notes
 function renderNotes() {
